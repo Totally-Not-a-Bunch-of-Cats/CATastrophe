@@ -8,14 +8,16 @@ public class Points : MonoBehaviour
     [SerializeField] private int TimeBonus = 1;
     [SerializeField] private GameObject PointsObj;
     //called by game or match manger need to decided or reword to work off of update
-    private void FixedUpdate()
+
+    private void OnEnable()
     {
-        AddTimePoints();
-        UpdateVisual();
+        StartCoroutine(PointIncrement());
     }
     private void AddTimePoints()
     {
         CurrentPoints += 1 * TimeBonus;
+        UpdateVisual();
+        StartCoroutine(PointIncrement());
     }
     /// <summary>
     /// triggers when the player sucesfully gets an item 
@@ -32,6 +34,13 @@ public class Points : MonoBehaviour
     {
         PointsObj.GetComponent<TMP_Text>().text = CurrentPoints.ToString();
     }
+
+    IEnumerator PointIncrement()
+    {
+        yield return new WaitForSeconds(.25f);
+        AddTimePoints();
+    }
+
     IEnumerator UpgradeTimeBonus()
     {
         yield return new WaitForSeconds(20);

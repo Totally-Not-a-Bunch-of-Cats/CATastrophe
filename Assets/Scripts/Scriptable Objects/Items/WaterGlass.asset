@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a118c2f8c551f84a9a1aa65a7052246, type: 3}
   m_Name: WaterGlass
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 6908169113686943644, guid: 0072e16a37a3cff458185acd97b4bcde, type: 3}
   Name: WaterGlass
