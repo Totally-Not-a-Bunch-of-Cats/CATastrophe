@@ -10,6 +10,7 @@ public class ItemBehaviorCatNip : MonoBehaviour, IPointerDownHandler, IPointerUp
     public void OnPointerEnter(PointerEventData eventData)
     {
         Clawing = true;
+        Debug.Log("claswed");
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class MatchManager : MonoBehaviour
 {
-    //lives till loss
-    [SerializeField] private int Lives = 3;
+    public GameObject Paw;
     //tracks current points
     [SerializeField] private int CurrentPoints = 0;
     //time bonus for points
@@ -14,9 +13,18 @@ public class MatchManager : MonoBehaviour
     //the points counter
     [SerializeField] private GameObject PointsObj;
 
+    [SerializeField] private float PointsDelay = .25f;
+
     private void OnEnable()
     {
         StartCoroutine(PointIncrement());
+    }
+
+    private void Update()
+    {
+        Vector3 temp = Input.mousePosition;
+        temp.z = 130;
+        Paw.transform.position = temp;
     }
 
     /// <summary>
@@ -44,38 +52,6 @@ public class MatchManager : MonoBehaviour
         PointsObj.GetComponent<TMP_Text>().text = CurrentPoints.ToString();
     }
 
-    /// <summary>
-    /// called when you watch an ad to reset 
-    /// </summary>
-    /// <param name="life"> amount of life to be gained</param>
-    public void LifeGain(int life)
-    {
-        Lives = life;
-        if(Lives < 3)
-        {
-            Lives = 3;
-        }
-    }
-    /// <summary>
-    /// is called when an item is let through to decrement a life.
-    /// </summary>
-    public void LifeLoss()
-    {
-        Lives += 1;
-        if(Lives <= 0)
-        {
-            GameOver();
-        }
-    }
-    /// <summary>
-    /// gets called when lives reaches zero
-    /// </summary>
-    void GameOver()
-    {
-
-    }
-
-
     IEnumerator UpgradeTimeBonus()
     {
         yield return new WaitForSeconds(20);
@@ -87,7 +63,7 @@ public class MatchManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator PointIncrement()
     {
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(PointsDelay);
         AddTimePoints();
     }
 }

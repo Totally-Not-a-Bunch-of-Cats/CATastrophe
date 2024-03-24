@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //other Managers
+    public MatchManager _MatchManager;
+    public LifeManager _LifeManager;
+    public ItemSpawnerManager _ItemSpawnerManager;
+
 
     // Singleton Varables
     //Check to see if we're about to be destroyed.

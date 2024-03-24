@@ -9,7 +9,7 @@ public class LoseDetection : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            Debug.Log("mep you lost");
+            GameManager.Instance._LifeManager.LoseLife();
         }
     }
 }

@@ -12,7 +12,7 @@ public class ItemBehaviorGlass : MonoBehaviour, IPointerEnterHandler //IPointerC
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("WEEE");
-        RB.AddForce(transform.up + transform.forward * 200f);
+        RB.AddForce(transform.up + transform.forward * 2000f);
         StartCoroutine(Die());
     }
 
