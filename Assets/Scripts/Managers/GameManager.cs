@@ -1,6 +1,7 @@
 /** @Author Aaron */
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -46,5 +47,22 @@ public class GameManager : MonoBehaviour
                 return m_Instance;
             }
         }
+    }
+    private void Start()
+    {
+        //_MatchManager.StartCountdown();
+    }
+
+    public void Restart()
+    {
+        StartCoroutine(StartMatch());
+    }
+
+    public IEnumerator StartMatch()
+    {
+        yield return new WaitForEndOfFrame();
+        SceneManager.LoadScene("Round");
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
     }
 }

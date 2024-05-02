@@ -1,56 +1,29 @@
 using UnityEngine.EventSystems;
+using System.Collections;
 using UnityEngine;
 
-public class ItemBehaviorTreat : MonoBehaviour, IPointerClickHandler //IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class ItemBehaviorTreat : MonoBehaviour, IPointerEnterHandler
 {
-    [SerializeField] private int clicks = 0;
-    [SerializeField] private GameObject VisualEffect;
+    [SerializeField] Rigidbody RB;
+    [SerializeField] private int PointsValue = 400;
+    [SerializeField] private VisualPoints Points;
+    [SerializeField] private BoxCollider ItemCollider;
     /// <summary>
-    /// Looks for two clicks on the item then triggers the bite function
-    /// </summary>
-    private void Update()
-    {
-        if (clicks >= 2)
-        {
-            Bite();
-        }
-    }
-    /// <summary>
-    /// Destroys the game object since the player did it
-    /// </summary>
-    void Bite()
-    {
-        Debug.Log("We biting");
-        clicks = 0;
-        Destroy(gameObject);
-    }
-    /// <summary>
-    /// looks for mouse/finger click adds a click to the count
+    /// detects when you slash across the screen to knock over the water glass
     /// </summary>
     /// <param name="eventData"></param>
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        //looks like it only work when you click and let go imediatly 
-        clicks += 1;
+        Debug.Log("WEEE");
+        RB.AddForce(transform.up + transform.forward * 5000f);
+        StartCoroutine(Die());
     }
 
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-
-    //public void OnPointerEnter(PointerEventData eventData)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-
-    //public void OnPointerExit(PointerEventData eventData)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
-
-    //public void OnPointerUp(PointerEventData eventData)
-    //{
-    //    throw new System.NotImplementedException();
-    //}
+    IEnumerator Die()
+    {
+        Points.SummonPoints();
+        GameManager.Instance._MatchManager.AddPoints(PointsValue);
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
 }

@@ -2,50 +2,24 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine;
 
-public class ItemBehaviorCatNip : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler//, IPointerClickHandler
+public class ItemBehaviorCatNip : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] bool Clawing = false;
-    [SerializeField] bool Clawed = false;
-    [SerializeField] bool Smelled = false;
-    public void OnPointerEnter(PointerEventData eventData)
+    [SerializeField] bool ActivilyDestroying = false;
+    [SerializeField] private int PointsValue = 400;
+    [SerializeField] private VisualPoints Points;
+    public void OnPointerClick(PointerEventData eventData)
     {
-        Clawing = true;
-        Debug.Log("claswed");
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if(Clawing)
+        if (!ActivilyDestroying)
         {
-            Clawed = true;
-            Debug.Log("claswed");
+            ActivilyDestroying = true;
+            Destroying();
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void Destroying()
     {
-        Debug.Log("sniffing");
-        StartCoroutine(Sniffed());
-        if(Smelled && Clawed)
-        {
-            Destroy(gameObject);
-        }
+        Points.SummonPoints();
+        GameManager.Instance._MatchManager.AddPoints(PointsValue);
+        Destroy(gameObject);
     }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("-sniffing");
-        Smelled = false;
-    }
-
-    IEnumerator Sniffed()
-    {
-        yield return new WaitForSeconds(.75f);
-        Smelled = true;
-    }
-
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    //looks like it only work when you click imediatly 
-    //    Debug.Log("Click Cat Nip");
-    //}
 }

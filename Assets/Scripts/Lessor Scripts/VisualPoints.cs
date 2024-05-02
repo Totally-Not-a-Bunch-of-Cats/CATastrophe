@@ -9,7 +9,10 @@ public class VisualPoints : MonoBehaviour
     /// </summary>
     public void SummonPoints()
     {
-        //update this to work
-        Instantiate(PointsPrefab, transform.position, Quaternion.identity, transform);
+        GameObject temp = Instantiate(PointsPrefab, transform.position, Quaternion.identity);
+        //getting the rotation mostly correct
+        Quaternion tempz = Quaternion.identity;
+        tempz.x = .53f;
+        temp.transform.localRotation = tempz;
     }
 }

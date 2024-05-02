@@ -15,16 +15,26 @@ public class MatchManager : MonoBehaviour
 
     [SerializeField] private float PointsDelay = .25f;
 
-    private void OnEnable()
+    public void StartCountdown()
     {
-        StartCoroutine(PointIncrement());
+        GameObject temp = GameObject.FindGameObjectWithTag("CountDown");
+        temp.transform.GetChild(0).gameObject.SetActive(true);
     }
 
+    public void StartMatch()
+    {
+        StartCoroutine(PointIncrement());
+        GameManager.Instance._ItemSpawnerManager.WaveDelay();
+    }
+    /// <summary>
+    /// tracks the paw to the mouse in 3D space
+    /// </summary>
     private void Update()
     {
-        Vector3 temp = Input.mousePosition;
-        temp.z = 130;
-        Paw.transform.position = temp;
+        Vector2 mousePos = new Vector2();
+        mousePos.x = Input.mousePosition.x;
+        mousePos.y = Input.mousePosition.y;
+        Paw.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 100));
     }
 
     /// <summary>
@@ -66,4 +76,14 @@ public class MatchManager : MonoBehaviour
         yield return new WaitForSeconds(PointsDelay);
         AddTimePoints();
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    public void PlayGame()
+    {
+        Time.timeScale = 1;
+    }
+
 }

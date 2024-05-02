@@ -9,6 +9,17 @@ public class LifeManager : MonoBehaviour
     [SerializeField] private int Lives = 3;
     public List<GameObject> Life;
     [SerializeField] int Pos = 0;
+    public bool GameOver = false;
+    [SerializeField] GameObject GameOverScreen;
+
+    private void Update()
+    {
+        if(GameOver)
+        {
+            Time.timeScale = 0;
+            GameOverScreen.SetActive(true);
+        }
+    }
 
     public void LoseLife()
     {
@@ -17,7 +28,7 @@ public class LifeManager : MonoBehaviour
         Lives--;
         if (Lives <= 0)
         {
-            //GameOver();
+            GameOver = true;
         }
     }
 
