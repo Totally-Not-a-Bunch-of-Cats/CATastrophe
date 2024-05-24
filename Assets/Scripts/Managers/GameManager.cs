@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     //other Managers
     public MatchManager _MatchManager;
     public LifeManager _LifeManager;
-    public ItemSpawnerManager _ItemSpawnerManager;
+    public SpawnerManager _SpawnerManager;
 
 
     // Singleton Varables

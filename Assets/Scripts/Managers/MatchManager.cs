@@ -24,7 +24,7 @@ public class MatchManager : MonoBehaviour
     public void StartMatch()
     {
         StartCoroutine(PointIncrement());
-        GameManager.Instance._ItemSpawnerManager.WaveDelay();
+        GameManager.Instance._SpawnerManager.SpawnBuffer();
     }
     /// <summary>
     /// tracks the paw to the mouse in 3D space
@@ -85,5 +85,4 @@ public class MatchManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
 }

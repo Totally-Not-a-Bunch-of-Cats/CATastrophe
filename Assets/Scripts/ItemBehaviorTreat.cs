@@ -2,7 +2,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using UnityEngine;
 
-public class ItemBehaviorTreat : MonoBehaviour, IPointerEnterHandler
+public class ItemBehaviorTreat : MonoBehaviour, IPointerExitHandler
 {
     [SerializeField] Rigidbody RB;
     [SerializeField] private int PointsValue = 400;
@@ -12,9 +12,8 @@ public class ItemBehaviorTreat : MonoBehaviour, IPointerEnterHandler
     /// detects when you slash across the screen to knock over the water glass
     /// </summary>
     /// <param name="eventData"></param>
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("WEEE");
         RB.AddForce(transform.up + transform.forward * 5000f);
         StartCoroutine(Die());
     }

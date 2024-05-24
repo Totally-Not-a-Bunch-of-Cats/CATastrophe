@@ -14,7 +14,6 @@ public class ItemBehaviorPlate : MonoBehaviour, IPointerEnterHandler //IPointerC
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("WEEE");
         RB.AddForce(transform.up + transform.forward * 5000f);
         StartCoroutine(Die());
     }
