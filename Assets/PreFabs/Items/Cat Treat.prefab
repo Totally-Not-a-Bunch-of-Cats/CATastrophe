@@ -5005,7 +5005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RB: {fileID: 7301796572541557645}
-  PointsValue: 400
+  PointsValue: 100
   Points: {fileID: 8304253510349446885}
   ItemCollider: {fileID: 7355013013196180092}
 --- !u!65 &7355013013196180092

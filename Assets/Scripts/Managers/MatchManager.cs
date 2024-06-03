@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class MatchManager : MonoBehaviour
 {
-    public GameObject Paw;
+    public GameObject PawRight;
+    public GameObject PawLeft;
     //tracks current points
     [SerializeField] private int CurrentPoints = 0;
     //time bonus for points
@@ -25,6 +26,7 @@ public class MatchManager : MonoBehaviour
     {
         StartCoroutine(PointIncrement());
         GameManager.Instance._SpawnerManager.SpawnBuffer();
+        StartCoroutine(GameManager.Instance._DifficultlyManager.IncreaseDifficulty());
     }
     /// <summary>
     /// tracks the paw to the mouse in 3D space
@@ -34,7 +36,7 @@ public class MatchManager : MonoBehaviour
         Vector2 mousePos = new Vector2();
         mousePos.x = Input.mousePosition.x;
         mousePos.y = Input.mousePosition.y;
-        Paw.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 100));
+        PawRight.GetComponent<Rigidbody>().position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 100));
     }
 
     /// <summary>

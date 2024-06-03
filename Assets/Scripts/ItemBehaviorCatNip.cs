@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemBehaviorCatNip : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] bool ActivilyDestroying = false;
-    [SerializeField] private int PointsValue = 400;
+    [SerializeField] private int PointsValue = 100;
     [SerializeField] private VisualPoints Points;
     public void OnPointerClick(PointerEventData eventData)
     {

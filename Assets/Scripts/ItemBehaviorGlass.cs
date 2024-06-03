@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemBehaviorGlass : MonoBehaviour, IPointerEnterHandler //IPointerClickHandler, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Rigidbody RB;
-    [SerializeField] private int PointsValue = 400;
+    [SerializeField] private int PointsValue = 100;
     [SerializeField] private VisualPoints Points;
     [SerializeField] private BoxCollider ItemCollider;
     /// <summary>
@@ -14,7 +14,8 @@ public class ItemBehaviorGlass : MonoBehaviour, IPointerEnterHandler //IPointerC
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        RB.AddForce(transform.up + transform.forward * 5000f);
+        print(GameManager.Instance._MatchManager.PawRight.GetComponent<Rigidbody>().position);
+        RB.AddForce(GameManager.Instance._MatchManager.PawRight.GetComponent<Rigidbody>().velocity.normalized * 5000f);
         StartCoroutine(Die());
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemBehaviorTreat : MonoBehaviour, IPointerExitHandler
 {
     [SerializeField] Rigidbody RB;
-    [SerializeField] private int PointsValue = 400;
+    [SerializeField] private int PointsValue = 100;
     [SerializeField] private VisualPoints Points;
     [SerializeField] private BoxCollider ItemCollider;
     /// <summary>
@@ -14,7 +14,8 @@ public class ItemBehaviorTreat : MonoBehaviour, IPointerExitHandler
     /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        RB.AddForce(transform.up + transform.forward * 5000f);
+        print(GameManager.Instance._MatchManager.PawRight.GetComponent<Rigidbody>().position);
+        RB.AddForce(GameManager.Instance._MatchManager.PawRight.GetComponent<Rigidbody>().velocity.normalized * 5000f); //tranform.up
         StartCoroutine(Die());
     }
 

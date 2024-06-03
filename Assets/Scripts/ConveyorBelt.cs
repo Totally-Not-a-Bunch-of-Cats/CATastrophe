@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ConveyorBelt : MonoBehaviour
 {
-    [SerializeField] private float velocity;
+    public float velocity;
     // Direction that the conveyer belt pushes objects.
     [Tooltip("Local direction does this push objects.")]
     [SerializeField] private RelativeDirection direction = RelativeDirection.Down;

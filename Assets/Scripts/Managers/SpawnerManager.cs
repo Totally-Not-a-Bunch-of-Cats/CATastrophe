@@ -8,12 +8,12 @@ public class SpawnerManager : MonoBehaviour
     public List<GameObject> Item;
     [SerializeField] int SpawnNum = 2;
     [SerializeField] int Spawned = 0;
-    [SerializeField] float WaveOffset = 2f;
-    [SerializeField] int SpawnRangeLow = 2;
-    [SerializeField] int SpawnRangeHigh = 5;
-    [SerializeField] int RandomDelayLow = 1;
-    [SerializeField] int RandomDelayHigh = 5;
-    bool FirstWave = true;
+    public float WaveOffset = 2f;
+    public int SpawnRangeLow = 2;
+    public int SpawnRangeHigh = 5;
+    public float RandomDelayLow = 1;
+    public float RandomDelayHigh = 5;
+    public bool FirstWave = true;
 
 
     public void SpawnBuffer()
@@ -58,11 +58,11 @@ public class SpawnerManager : MonoBehaviour
         }
         else
         {
-            RandomDelay = Random.Range(1.5f, 5f);
+            RandomDelay = Random.Range(RandomDelayLow, RandomDelayHigh);
         }
         yield return new WaitForSeconds(RandomDelay);
         Spawned += 1;
-        int tempInt = Random.Range(0, Item.Count);
+        int tempInt = Random.Range(0, Item.Count); //random item
         Vector3 tempV3 = new Vector3(Random.Range(SpawnArea[0].transform.position.x, SpawnArea[1].transform.position.x), 0, Random.Range(SpawnArea[0].transform.position.z, SpawnArea[2].transform.position.z));
         Instantiate(Item[tempInt], tempV3, Quaternion.identity);
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8124229865954108763}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Potted Cactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

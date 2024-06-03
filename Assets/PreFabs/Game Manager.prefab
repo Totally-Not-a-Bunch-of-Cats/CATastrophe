@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8037893457690634664}
   - component: {fileID: 4262981253316940903}
   - component: {fileID: 249189520870686365}
+  - component: {fileID: 6045067679038759319}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   _MatchManager: {fileID: 0}
   _LifeManager: {fileID: 0}
   _SpawnerManager: {fileID: 0}
+  _DifficultlyManager: {fileID: 0}
 --- !u!114 &249189520870686365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,3 +67,15 @@ MonoBehaviour:
   TimeBonus: 1
   PointsObj: {fileID: 0}
   PointsDelay: 0.25
+--- !u!114 &6045067679038759319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445965442226268988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56eaa4cc8079a746b5ce85281e313fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

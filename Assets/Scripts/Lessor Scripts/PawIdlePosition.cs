@@ -8,7 +8,7 @@ public class PawIdlePosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(false)
+        if (false)
         {
             transform.position = IdlePos;
         }

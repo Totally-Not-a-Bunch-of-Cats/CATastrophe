@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivilyDestroying: 0
-  PointsValue: 400
+  PointsValue: 500
   Points: {fileID: 4178715354921746358}
 --- !u!65 &5401859935286840879
 BoxCollider:
