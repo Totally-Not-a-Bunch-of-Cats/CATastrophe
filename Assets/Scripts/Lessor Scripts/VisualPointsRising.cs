@@ -6,8 +6,15 @@ using UnityEngine;
 public class VisualPointsRising : MonoBehaviour
 {
     [SerializeField] bool Started = false;
+    public int Points;
+    public TextMeshPro PointsString;
     [SerializeField] float Fade = .01f;
     [SerializeField] float FadeTime = 1;
+
+    private void Start()
+    {
+        PointsString.text = Points.ToString(); 
+    }
     private void FixedUpdate()
     {
         gameObject.transform.position += new Vector3(0,1,0);

@@ -36,7 +36,7 @@ public class MatchManager : MonoBehaviour
         Vector2 mousePos = new Vector2();
         mousePos.x = Input.mousePosition.x;
         mousePos.y = Input.mousePosition.y;
-        PawRight.GetComponent<Rigidbody>().position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 100));
+        PawRight.GetComponent<Rigidbody>().MovePosition(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 100)));
     }
 
     /// <summary>

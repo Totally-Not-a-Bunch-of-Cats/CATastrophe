@@ -5016,5 +5016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Started: 0
+  Points: 0
+  PointsString: {fileID: 4514280185729238621}
   Fade: 0.1
   FadeTime: 0.25
