@@ -7,7 +7,6 @@ public class ItemBehaviorPlate : MonoBehaviour, IPointerExitHandler
     [SerializeField] Rigidbody RB;
     [SerializeField] private int PointsValue = 100;
     [SerializeField] private float PointsMultiplier = 1;
-    [SerializeField] private float BaseForce = 2000f;
     [SerializeField] private float VelocityModifier = 1;
     [SerializeField] private VisualPoints Points;
     [SerializeField] private BoxCollider ItemCollider;
@@ -17,8 +16,8 @@ public class ItemBehaviorPlate : MonoBehaviour, IPointerExitHandler
     /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        RB.AddForce(-GameManager.Instance._MatchManager.PawRight.GetComponent<PawVelocity>().Velocity.normalized * (BaseForce * VelocityModifier));
-        VelocityModifier += 1;
+        RB.AddForce(-GameManager.Instance._MatchManager.Paws[0].GetComponent<PawVelocity>().Velocity.normalized * (GameManager.Instance._MatchManager.PawForce * VelocityModifier));
+        //VelocityModifier += 1;
         PointsMultiplier += .1f;
         Points.Pointss = (int)(PointsValue * PointsMultiplier);
         Points.SummonPoints();

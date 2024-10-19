@@ -4896,7 +4896,7 @@ MonoBehaviour:
   RB: {fileID: 6066303081947791147}
   PointsValue: 100
   PointsMultiplier: 1
-  BaseForce: 2000
+  BaseForce: 2500
   VelocityModifier: 1
   Points: {fileID: 2663462519558583306}
   ItemCollider: {fileID: 5082830798967142418}

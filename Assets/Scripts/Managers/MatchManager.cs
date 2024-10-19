@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MatchManager : MonoBehaviour
 {
-    public GameObject PawRight;
-    public GameObject PawLeft;
+    public GameObject[] Paws;
+    public float PawForce = 2000f;
     //tracks current points
     [SerializeField] private int CurrentPoints = 0;
     //time bonus for points
@@ -33,10 +33,23 @@ public class MatchManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        Vector2 mousePos = new Vector2();
-        mousePos.x = Input.mousePosition.x;
-        mousePos.y = Input.mousePosition.y;
-        PawRight.GetComponent<Rigidbody>().MovePosition(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 100)));
+        if(Application.platform != RuntimePlatform.WindowsEditor)
+        {
+            for (int i = 0; i < Input.touches.Length; i++)
+            {
+                Vector2 pawPos = new Vector2();
+                pawPos.x = Input.touches[i].position.x;
+                pawPos.y = Input.touches[i].position.y;
+                Paws[i].GetComponent<Rigidbody>().MovePosition(Camera.main.ScreenToWorldPoint(new Vector3(pawPos.x, pawPos.y, 100)));
+            }
+        }
+        if(Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            Vector2 pawPos = new Vector2();
+            pawPos.x = Input.mousePosition.x;
+            pawPos.y = Input.mousePosition.y;
+            Paws[0].GetComponent<Rigidbody>().MovePosition(Camera.main.ScreenToWorldPoint(new Vector3(pawPos.x, pawPos.y, 100)));
+        }
     }
 
     /// <summary>

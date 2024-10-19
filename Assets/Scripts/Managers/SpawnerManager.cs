@@ -19,7 +19,6 @@ public class SpawnerManager : MonoBehaviour
     public void SpawnBuffer()
     {
         SpawnNum = Random.Range(SpawnRangeLow, SpawnRangeHigh);
-        print(SpawnNum);
         for (int i = 0; i < SpawnNum; i++)
         {
             StartCoroutine(Spawn());
@@ -33,10 +32,8 @@ public class SpawnerManager : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitUntil(() => SpawnNum <= Spawned);
-        print("wave delayed Starting");
         Spawned = 0;
         yield return new WaitForSeconds(WaveOffset);
-        print("wave delayed finished");
         if (!GameManager.Instance._LifeManager.GameOver)
         {
             SpawnBuffer();

@@ -28,7 +28,6 @@ public class DifficultlyManager : MonoBehaviour
         {
             Belt = GameObject.FindGameObjectWithTag("Belt");
         }
-        print("beltSpeed");
         if(Belt.GetComponent<ConveyorBelt>().velocity <= 60)
         {
             Belt.GetComponent<ConveyorBelt>().velocity += 2;
@@ -49,7 +48,6 @@ public class DifficultlyManager : MonoBehaviour
         //goes down at a consistant rate
         if(GameManager.Instance._SpawnerManager.WaveOffset >= 1)
         {
-            print("wave delay");
             GameManager.Instance._SpawnerManager.WaveOffset -= .05f;
             StartCoroutine(WaitReduceWaveDelay(ReduceWaveDelayWaitTime));
         }
@@ -69,7 +67,6 @@ public class DifficultlyManager : MonoBehaviour
         //alternates between hight and low 
         if (GameManager.Instance._SpawnerManager.SpawnRangeHigh <= 10)
         {
-            print("spawn num up");
             GameManager.Instance._SpawnerManager.SpawnRangeHigh += 1;
             StartCoroutine(WaitIncreaseSpawnNumHigh(IncreaseSpawnNumHigh_lowWaitTime));
         }
@@ -88,7 +85,6 @@ public class DifficultlyManager : MonoBehaviour
         //alternates between hight and low 
         if (GameManager.Instance._SpawnerManager.SpawnRangeHigh >= GameManager.Instance._SpawnerManager.SpawnRangeLow)
         {
-            print("spawn num down");
             GameManager.Instance._SpawnerManager.SpawnRangeHigh += 1;
             StartCoroutine(WaitIncreaseSpawnNumLow(IncreaseSpawnNumHigh_lowWaitTime));
         }
@@ -106,7 +102,6 @@ public class DifficultlyManager : MonoBehaviour
         //alternates between high and low
         if (GameManager.Instance._SpawnerManager.RandomDelayHigh <= 2)
         {
-            print("delay high");
             GameManager.Instance._SpawnerManager.RandomDelayHigh -= .05f;
             StartCoroutine(WaitReduceRandomDelayHigh(IncreaseRandomDelayHigh_lowWaitTime));
         }
@@ -124,7 +119,6 @@ public class DifficultlyManager : MonoBehaviour
         //alternates between hight and low
         if (GameManager.Instance._SpawnerManager.RandomDelayLow >= 0)
         {
-            print("delay low");
             GameManager.Instance._SpawnerManager.RandomDelayLow -= .01f;
             StartCoroutine(WaitReduceRandomDelayLow(IncreaseRandomDelayHigh_lowWaitTime));
         }
